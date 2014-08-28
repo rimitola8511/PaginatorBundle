@@ -1,0 +1,22 @@
+{
+    "name": "jmardz/paginator-bundle",
+    "type": "symfony-bundle",
+    "license": "",
+    "description": "Paginator bundle for symfony2 proyect",
+    "keywords": ["paginator", "symfony"],
+    "authors": {
+        "name":     "Jmardz",
+        "email":    "jmdserver@hotmail.es",
+        "homepage": "https://github.com/jmardz"
+    },
+    "require": {
+        "php":     ">=5.3.0",
+        "symfony/symfony": ">=2.3"  
+    },
+    "autoload": {
+         "psr-0": {
+            "Jmardz\\PaginatorBundle": ""
+        }
+    },
+    "target-dir": "Jmardz/PaginatorBundle"
+}
