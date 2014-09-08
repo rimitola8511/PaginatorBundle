@@ -20,9 +20,9 @@ class PaginationExtension extends \Twig_Extension{
         );
     }
     
-    public function render()
+    public function render($view = null,$options = array())
     {
-       return $this->pgHelper->render();
+       return $this->pgHelper->render($view,$options);
     }
     
     public function getName() 
