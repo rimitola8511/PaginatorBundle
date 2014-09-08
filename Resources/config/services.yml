@@ -1,7 +1,16 @@
 parameters:
-#    paginator.example.class: Jmardz\PaginatorBundle\Example
+     paginator.class: Jmardz\PaginatorBundle\Paginator\Paginator
+     paginator.helper.class: Jmardz\PaginatorBundle\Helper\PaginatorHelper
+     twig.extension.jmardz.paginator: Jmardz\PaginatorBundle\Twig\Extension\PaginationExtension
 
 services:
-#    paginator.example:
-#        class: %paginator.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+     jmardz.paginator:
+         class: %paginator.class%         
+     jmardz.paginator.helper:
+         class: %paginator.helper.class%
+         arguments: [@service_container]
+     twig.extension.jmardz.paginator:
+         class: %twig.extension.jmardz.paginator%
+         arguments: [@jmardz.paginator.helper]
+         tags:
+            - { name: twig.extension }

@@ -1,0 +1,38 @@
+<ul class="{{ paginatorContentClass }}">
+    {# first #}
+    {% if currentPage > 1 %}
+        <li class="{{ firstEnabledClass }}"><a href="{{ path(app.request.attributes.get('_route'), { 'page':1 }) }}" >{{ firstText }}</a></li>
+    {% else %}
+        <li class="{{ firstDesabledClass }}">{{ firstText }}</li>
+    {% endif %}
+    
+    {# prev #}
+    {% if currentPage > 1 %}
+        <li class="{{ prevEnabledClass }}"><a href="{{ path(app.request.attributes.get('_route'), { 'page':currentPage-1 }) }}" >{{ prevText }}</a></li>
+    {% else %}
+        <li class="{{ prevDiabledClass }}">{{ prevText }}</li>
+    {% endif %}
+    
+    {# number page #}
+    {% for page in minPage..maxPage %}
+        {% if page == currentPage %}
+            <li class="{{ currentPageClass }}">{{ page }}</li>    
+        {% else %}
+            <li class="{{ currentPage }}"><a href="{{ path(app.request.attributes.get('_route'), { 'page':page }) }}" >{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+    
+    {# next #}
+    {% if currentPage < lastPage %}
+        <li class="{{ nextEnabledClass }}"><a href="{{ path(app.request.attributes.get('_route'), { 'page':currentPage+1 }) }}">{{ nextText }}</a></li>
+    {% else %}
+        <li class="{{ nextDisabledClass }}">{{ nextText }}</li>
+    {% endif %}
+    
+    {# last #}
+    {% if currentPage < lastPage%}
+        <li class="{{ lastEnabledClass }}"><a href="{{ path(app.request.attributes.get('_route'), { 'page':lastPage }) }}">{{ lastText }}</a></li>
+    {% else %}
+        <li class="{{ lastDesabledClass }}">{{ lastText }}</li>
+    {% endif %}    
+</ul>

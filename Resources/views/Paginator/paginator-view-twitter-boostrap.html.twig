@@ -1,0 +1,40 @@
+<div class="pagination">
+    <ul>
+        {# first #}
+        {% if currentPage > 1 %}
+            <li><a href="{{ path(app.request.attributes.get('_route'), { 'page':1 }) }}" >{{ firstText }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ firstText }}</span></li>
+        {% endif %}
+        
+        {# prev #}
+        {% if currentPage > 1 %}
+            <li><a href="{{ path(app.request.attributes.get('_route'), { 'page':currentPage-1 }) }}" >{{ prevText }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ prevText }}</span></li>
+        {% endif %}
+
+        {# number page #}
+        {% for page in minPage..maxPage %}
+            {% if page == currentPage %}
+                <li class="active"><span>{{ page }}</span></li>    
+            {% else %}
+                <li><a href="{{ path(app.request.attributes.get('_route'), { 'page':page }) }}" >{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {# next #}
+        {% if currentPage < lastPage %}
+            <li><a href="{{ path(app.request.attributes.get('_route'), { 'page':currentPage+1 }) }}">{{ nextText }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ nextText }}</span></li>
+        {% endif %}
+        
+        {# last #}
+        {% if currentPage < lastPage%}
+            <li><a href="{{ path(app.request.attributes.get('_route'), { 'page':lastPage }) }}">{{ lastText }}</a></li>
+        {% else %}
+            <li class="disabled"><span>{{ lastText }}</span></li>
+        {% endif %}   
+    </ul>
+</div>
